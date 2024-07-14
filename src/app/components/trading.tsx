@@ -5,6 +5,7 @@ import Input from '@/components/input';
 import useTradingStore from '@/store/tradeStore';
 import useProtocolStore from '@/store/protocolStore';
 import { formatCurrency, formatNumber } from '@/lib/formatNumber';
+import Coin from '@/components/coin';
 
 const Trading = ({ }) => {
   const { 
@@ -65,54 +66,74 @@ const Trading = ({ }) => {
 
   return (
     <div className='h-[100%] flex-1 flex flex-col'>
-      <h2>Trading simulator</h2>
+      <h2 className='mb-4'>Trading simulator</h2>
 
-      <div className='flex-row flex'> 
-        <p>AVAX deposited:</p>
-        <Input 
-          value={deposited.toString()}
-          onChange={(e) => updateDeposited(Number((e.target as HTMLInputElement).value))}
-        />
+      <div className='flex max-sm:flex-col w-full justify-between'>
+        <div className='w-[42%] max-sm:w-full flex flex-col justify-end'>
+          <div className='flex items-center'>
+            <p>AVAX deposit: </p>
+          </div>
+          <div className='h-8 mt-1'>
+            <Input 
+              value={ausdCirculation.toString()}
+              onChange={(e) => updateDeposited(Number((e.target as HTMLInputElement).value))}
+            />
+          </div>
+        </div>
+
+        <div className='w-[42%] max-sm:w-full max-sm:mt-2 flex flex-col justify-end'>
+          <div className='flex'>
+            <p className='w-36'>AVAX mited: </p>    
+            <p>{formatNumber(getMinted())}</p>
+          </div>
+
+          <div className='flex'>
+            <p className='w-36'>AVAX position: </p>    
+            <p>{formatCurrency(getPosition())}</p>
+          </div>
+        </div>
+      </div>
+
+      <hr className='my-6' />
+
+      <div className='flex max-sm:flex-col w-full'>
+        <div className='flex items-center'>
+            <p>AVAX change: </p>
+          </div>
+          <div className='h-8 mt-1'>
+            <Input 
+              percentage
+              value={changePercent.toString()}
+              onChange={(e) => updateDeposited(Number((e.target as HTMLInputElement).value))}
+            />
+          </div>
+      </div>
+
+      <hr className='my-6' />
+
+      <Coin 
+        name='xAVAX'
+        value={getXavaxPrice(true)}
+      />
+
+      <div className='flex-row flex mt-2'>
+        <p className='w-[160px]'>New xAVAX position: </p>
+        <p>{formatCurrency(getPosition(true))}</p> 
       </div>
 
       <div className='flex-row flex'>
-        <p>xAVAX minted: {formatNumber(getMinted())}</p>
+        <p className='w-[160px]'>New AVAX amount: </p>
+        <p>{avaxReturned.toFixed(2)}</p> 
       </div>
 
       <div className='flex-row flex'>
-        <p>xAVAX starting position: {formatNumber(getPosition())}</p>
-      </div>
-
-      <hr />
-
-      <div className='flex-row flex'> 
-        <p>AVAX price change %:</p>
-        <Input 
-          value={changePercent.toString()}
-          onChange={(e) => updateChangePercent(Number((e.target as HTMLInputElement).value))}
-        />
-      </div>
-
-      <hr />
-
-      <div className='flex-row flex'>
-        <p>xAVAX destination position: {formatCurrency(getPosition(true))}</p>
+        <p className='w-[160px]'>Dollar value change: </p>
+        <p>{changeInUsd.toFixed(2)}</p> 
       </div>
 
       <div className='flex-row flex'>
-        <p>xAVAX price: {formatCurrency(getXavaxPrice(true))}</p>
-      </div>
-
-      <div className='flex-row flex'>
-        <p>AVAX returned: {avaxReturned.toFixed(2)}</p>
-      </div>
-
-      <div className='flex-row flex'>
-        <p>Dollar value change: {changeInUsd.toFixed(2)}%</p>
-      </div>
-
-      <div className='flex-row flex'>
-        <p>AVAX Change: {changeInAvax.toFixed(2)}%</p>
+        <p className='w-[160px]'>AVAX Change: </p>
+        <p>{changeInAvax.toFixed(2)}</p> 
       </div>
     </div>
   );
