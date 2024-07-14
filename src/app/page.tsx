@@ -3,9 +3,9 @@ import Trading from './components/trading';
 
 export default function Home() {
   return (
-    <main className='flex min-h-screen items-start justify-center p-24 bg-slate-800 gap-8'>
+    <div className='w-[640px] max-sm:w-[calc(100%-2rem)] max-sm:flex-col flex p-4 bg-slate-700 gap-8 my-10 rounded-[16px]'>
       <Protocol />
-      <Trading />
-    </main>
+      {/* <Trading /> */}
+    </div>
   );
-}
+};

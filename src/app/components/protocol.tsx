@@ -4,6 +4,7 @@ import React from 'react';
 import { formatCurrency, formatNumber } from '@/lib/formatNumber';
 import useProtocolStore from '@/store/protocolStore';
 import Input from '@/components/input';
+import Coin from '@/components/coin';
 
 const Protocol = ({  }) => {
   const { 
@@ -43,71 +44,98 @@ const Protocol = ({  }) => {
   const leverage = avaxCollateral / xavaxMarketCap;
 
   return (
-    <div className='h-[100%] flex-1 flex flex-col'>
-      <h2>Protocol simulator</h2>
+    <div className='h-[100%] w-[100%] flex-1 flex flex-col'>
+      <h2 className='mb-4'>Protocol simulator</h2>
 
-      <div className='flex-row flex'> 
-        <p>AVAX price:</p>
-        <Input 
-          value={avaxPrice.toString()}
-          onChange={(e) => updateAvaxPrice(Number((e.target as HTMLInputElement).value))}
-        />
+      <div className='flex max-sm:flex-col w-full justify-between'>
+        <div className='w-[42%] max-sm:w-full'>
+          <Coin 
+            name='AVAX' 
+            value={avaxPrice}  
+            onChange={(e) => updateAvaxPrice(Number((e.target as HTMLInputElement).value))}
+          />
+        </div>
+
+        <div className='w-[42%] max-sm:w-full max-sm:mt-2 flex flex-col justify-end'>
+          <div className='flex'>
+            <p className='w-36'>AVAX deposited: </p>    
+            <p>{formatNumber(avaxDeposited)}</p>
+          </div>
+
+          <div className='flex'>
+            <p className='w-36'>AVAX collateral: </p>    
+            <p>{formatCurrency(avaxCollateral)}</p>
+          </div>
+        </div>
+      </div>
+
+      <hr className='my-6' />
+
+      <div className='flex max-sm:flex-col w-full justify-between'>
+        <div className='w-[42%] max-sm:w-full'>
+          <Coin 
+            name='aUSD' 
+            value={trueAusdPrice}  
+          />
+
+          <div className='flex mt-2'>
+            <p className='w-36'>aUSD market cap: </p>    
+            <p>{formatCurrency(trueAusdMarketCap)}</p>
+          </div>
+        </div>
+
+        <div className='w-[42%] max-sm:w-full flex flex-col justify-end'>
+          <div className='flex items-center'>
+            <p>aUSD circulation: </p>
+          </div>
+          <div className='h-8 mt-1'>
+            <Input 
+              value={ausdCirculation.toString()}
+              onChange={(e) => updateAusdCirculation(Number((e.target as HTMLInputElement).value))}
+            />
+          </div>
+        </div>
+      </div>
+
+      <hr className='my-6' />
+
+      <div className='flex max-sm:flex-col w-full justify-between'>
+        <div className='w-[42%] max-sm:w-full'>
+          <Coin 
+            name='xAVAX' 
+            value={xavaxPrice}  
+          />
+
+          <div className='flex mt-2'>
+            <p className='w-36'>xAVAX market cap: </p>    
+            <p>{formatCurrency(xavaxPrice)}</p>
+          </div>
+        </div>
+
+        <div className='w-[42%] max-sm:w-full flex flex-col justify-end'>
+          <div className='flex items-center'>
+            <p>xAVAX circulation: </p>
+          </div>
+          <div className='h-8 mt-1'>
+            <Input 
+              value={xavaxCirculation.toString()}
+              onChange={(e) => updateXavaxCirculation(Number((e.target as HTMLInputElement).value))}
+            />
+          </div>
+        </div>
+      </div>
+
+      <hr className='my-6' />
+
+      <div className='flex-row flex'>
+        <p className='w-[160px]'>Leverage: </p>
+        <p>{leverage.toFixed(2)}</p>
       </div>
 
       <div className='flex-row flex'>
-        <p>AVAX deposited: {formatNumber(avaxDeposited)}</p>
+        <p className='w-[160px]'>Collaterazation ratio: </p>
+        <p>{collateralizationRatio.toFixed(2)}%</p>
       </div>
-
-      <div className='flex-row flex'>
-        <p>AVAX collateral: {formatCurrency(avaxCollateral)}</p>
-      </div>
-      
-      <hr className='padding-20' />
-
-      <div className='flex-row flex'>
-        <p>aUSD market cap: {formatCurrency(trueAusdMarketCap)}</p>
-      </div>
-
-      <div className='flex-row flex'>
-        <p>aUSD circulation: </p>
-        <Input 
-          value={ausdCirculation.toString()}
-          onChange={(e) => updateAusdCirculation(Number((e.target as HTMLInputElement).value))}
-        />
-      </div>
-
-      <div className='flex-row flex'>
-        <p>aUSD price: {formatCurrency(trueAusdPrice)}</p>
-      </div>
-
-      <hr className='padding-20' />
-
-      <div className='flex-row flex'>
-        <p>xAVAX market cap: {formatCurrency(xavaxMarketCap)}</p>
-      </div>
-
-      <div className='flex-row flex'>
-        <p>xAVAX circulation: </p>
-        <Input 
-          value={xavaxCirculation.toString()}
-          onChange={(e) => updateXavaxCirculation(Number((e.target as HTMLInputElement).value))}
-        />
-      </div>
-
-      <div className='flex-row flex'>
-        <p>xAVAX price: {formatCurrency(xavaxPrice)}</p>
-      </div>
-
-      <hr className='padding-20' />
-
-      <div className='flex-row flex'>
-        <p>Leverage: {leverage.toFixed(2)}</p>
-      </div>
-
-      <div className='flex-row flex'>
-        <p>Collaterazation ratio: {collateralizationRatio.toFixed(2)}%</p>
-      </div>
-
     </div>
   )
 };
