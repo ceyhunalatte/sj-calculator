@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${inter.className} bg-slate-800 relative`}>
+      <body className={`${inter.className} bg-slate-950 relative`}>
         <Header />
 
         <main className='flex flex-col min-h-[calc(100vh-8rem)] max-w-screen items-center justify-start bg-slate-800'>

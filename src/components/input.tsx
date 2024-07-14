@@ -25,7 +25,7 @@ const Input = ({ value, currency, percentage, onChange }: InputProps) => (
     )}
     
     <input 
-      value={value}
+      value={isNaN(Number(value)) ? 0 : value}
       onChange={onChange}
       className='text-black rounded-none w-full pl-1 outline-none'
     />

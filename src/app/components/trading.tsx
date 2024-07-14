@@ -96,15 +96,15 @@ const Trading = ({ }) => {
 
       <hr className='my-6' />
 
-      <div className='flex max-sm:flex-col w-full'>
+      <div className='flex flex-col w-full'>
         <div className='flex items-center'>
             <p>AVAX change: </p>
           </div>
-          <div className='h-8 mt-1'>
+          <div className='h-8 mt-1 min-[640px]:w-[42%]'>
             <Input 
               percentage
               value={changePercent.toString()}
-              onChange={(e) => updateDeposited(Number((e.target as HTMLInputElement).value))}
+              onChange={(e) => updateChangePercent(Number((e.target as HTMLInputElement).value))}
             />
           </div>
       </div>
@@ -116,7 +116,7 @@ const Trading = ({ }) => {
         value={getXavaxPrice(true)}
       />
 
-      <div className='flex-row flex mt-2'>
+      <div className='flex-row flex mt-1'>
         <p className='w-[160px]'>New xAVAX position: </p>
         <p>{formatCurrency(getPosition(true))}</p> 
       </div>
