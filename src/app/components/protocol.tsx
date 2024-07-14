@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useState } from 'react';
+import React from 'react';
 import { formatCurrency, formatNumber } from '@/lib/formatNumber';
-import { useProtocolStore } from '@/store/protocolStore';
+import useProtocolStore from '@/store/protocolStore';
 import Input from '@/components/input';
 
 const Protocol = ({  }) => {
@@ -27,15 +27,16 @@ const Protocol = ({  }) => {
 
   // As long as the total value of AVAX collateral is greater than
   // aUSD market cap, aUSD is always $1. AVAX colleteral value cannot be exceeded
+  // IMPORTANT: Rest of the calculations respect this rule
   const trueAusdPrice = avaxCollateral > trueAusdMarketCap
     ? 1
     : avaxCollateral / ausdCirculation;
 
-  const xavaxMarketCap = avaxCollateral - trueAusdMarketCap > 0 
-    ? avaxCollateral - ausdMarketCap
+  const xavaxMarketCap = avaxCollateral > trueAusdMarketCap
+    ? avaxCollateral - trueAusdMarketCap
     : 0;
 
-  const xavaxPrice = avaxCollateral >= ausdMarketCap 
+  const xavaxPrice = avaxCollateral > trueAusdMarketCap
     ? xavaxMarketCap / xavaxCirculation
     : 0;
  
@@ -43,6 +44,8 @@ const Protocol = ({  }) => {
 
   return (
     <div className='h-[100%] flex-1 flex flex-col'>
+      <h2>Protocol simulator</h2>
+
       <div className='flex-row flex'> 
         <p>AVAX price:</p>
         <Input 

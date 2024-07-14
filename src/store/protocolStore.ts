@@ -18,7 +18,7 @@ type Actions = {
   updateXavaxCirculation: (value: number) => void
 };
 
-export const useProtocolStore = create<State & Actions>((set) => ({
+export default create<State & Actions>((set) => ({
   avaxPrice: 30,
   avaxDeposited: 90000,
   ausdCirculation: 2000000,

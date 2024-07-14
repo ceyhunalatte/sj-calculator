@@ -1,9 +1,11 @@
-import Protocol from "./coponents/protocol";
+import Protocol from './components/protocol';
+import Trading from './components/trading';
 
 export default function Home() {
   return (
-    <main className='flex min-h-screen flex-col items-center justify-center p-24 bg-slate-800'>
+    <main className='flex min-h-screen items-start justify-center p-24 bg-slate-800 gap-8'>
       <Protocol />
+      <Trading />
     </main>
   );
 }

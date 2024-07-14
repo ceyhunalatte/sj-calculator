@@ -31,3 +31,25 @@ body {
     text-wrap: balance;
   }
 }
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 1.50rem;
+}
+
+input, p {
+  font-weight: 300;
+}
+
+p {
+  font-weight: 200;
+}
