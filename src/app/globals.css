@@ -32,6 +32,12 @@ body {
   }
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 h1 {
   font-size: 2rem;
   font-weight: 600
@@ -48,8 +54,30 @@ h3 {
 
 input, p {
   font-weight: 300;
+  font-family: var(--font-inter);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-titilium);
 }
 
 p {
   font-weight: 200;
+}
+
+.font-titilium {
+  font-family: var(--font-titilium)
+}
+
+@keyframes fadeInFrames {
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 100
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInFrames 0.2s;
 }

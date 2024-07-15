@@ -65,7 +65,7 @@ const Trading = ({ }) => {
   const changeInAvax = (avaxReturned - deposited) / deposited * 100;
 
   return (
-    <div className='h-[100%] flex-1 flex flex-col'>
+    <div className='h-[100%] flex-1 flex flex-col animate-fade-in'>
       <h2 className='mb-4'>Trading simulator</h2>
 
       <div className='flex max-sm:flex-col w-full justify-between'>
@@ -73,23 +73,23 @@ const Trading = ({ }) => {
           <div className='flex items-center'>
             <p>AVAX deposit: </p>
           </div>
-          <div className='h-8 mt-1'>
+          <div className='h-10 mt-1'>
             <Input 
-              value={ausdCirculation.toString()}
+              value={deposited.toString()}
               onChange={(e) => updateDeposited(Number((e.target as HTMLInputElement).value))}
             />
           </div>
         </div>
 
         <div className='w-[42%] max-sm:w-full max-sm:mt-2 flex flex-col justify-end'>
-          <div className='flex'>
+          <div className='flex min-[640px]:justify-end'>
             <p className='w-36'>AVAX mited: </p>    
-            <p>{formatNumber(getMinted())}</p>
+            <p className='font-normal'>{formatNumber(getMinted())}</p>
           </div>
 
-          <div className='flex'>
+          <div className='flex min-[640px]:justify-end'>
             <p className='w-36'>AVAX position: </p>    
-            <p>{formatCurrency(getPosition())}</p>
+            <p className='font-normal'>{formatCurrency(getPosition())}</p>
           </div>
         </div>
       </div>
@@ -100,7 +100,7 @@ const Trading = ({ }) => {
         <div className='flex items-center'>
             <p>AVAX change: </p>
           </div>
-          <div className='h-8 mt-1 min-[640px]:w-[42%]'>
+          <div className='h-10 mt-1 min-[640px]:w-[42%]'>
             <Input 
               percentage
               value={changePercent.toString()}
@@ -118,22 +118,22 @@ const Trading = ({ }) => {
 
       <div className='flex-row flex mt-1'>
         <p className='w-[160px]'>New xAVAX position: </p>
-        <p>{formatCurrency(getPosition(true))}</p> 
+        <p className='font-normal'>{formatCurrency(getPosition(true))}</p> 
       </div>
 
       <div className='flex-row flex'>
         <p className='w-[160px]'>New AVAX amount: </p>
-        <p>{avaxReturned.toFixed(2)}</p> 
+        <p className='font-normal'>{avaxReturned.toFixed(2)}</p> 
       </div>
 
       <div className='flex-row flex'>
         <p className='w-[160px]'>Dollar value change: </p>
-        <p>{changeInUsd.toFixed(2)}</p> 
+        <p className='font-normal'>{changeInUsd.toFixed(2)}</p> 
       </div>
 
       <div className='flex-row flex'>
         <p className='w-[160px]'>AVAX Change: </p>
-        <p>{changeInAvax.toFixed(2)}</p> 
+        <p className='font-normal'>{changeInAvax.toFixed(2)}</p> 
       </div>
     </div>
   );

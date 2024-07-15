@@ -15,7 +15,7 @@ export default function Home() {
         selected={tab}
         onSelect={(i) => setTab(i)}
       />
-      <div className='w-[640px] max-sm:w-[calc(100%-2rem)] max-sm:flex-col flex p-4 bg-slate-700 gap-8 mb-10 mt-6 rounded-[16px]'>
+      <div className='w-[640px] max-sm:w-[calc(100%-1rem)] max-sm:flex-col flex p-4 bg-[#282828] gap-8 mb-10 mt-6 rounded-[16px] shadow-2xl'>
         {!tab ? <Protocol /> : <Trading />}
       </div>
     </React.Fragment>

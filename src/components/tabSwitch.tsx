@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useState } from 'react'
 
 interface TabSwitchProps {
@@ -13,15 +14,18 @@ const TabSwitch = ({ options, selected, onSelect }: TabSwitchProps) => {
   if(!options?.length) return null
   
   return (
-    <div className='mt-6 h-9 w-[640px] max-sm:w-[calc(100%-2rem)] bg-[#fff] flex rounded-[100px]'>
+    <div className='mt-6 h-9 w-[640px] max-sm:w-[calc(100%-1rem)] bg-[#333333] flex rounded-[100px] shadow-xl'>
       {options.map((opt, i) => (
         <button 
           key={i} 
-          className={`cursor-pointer h-full w-[50%] ${selected === i ? 'bg-gray-500' : 'bg-transparent'}  rounded-[100px]`}
+          className={`cursor-pointer h-full w-[50%] ${selected === i ? 'bg-[#eb4142]' : 'bg-transparent'}  rounded-[100px]`}
           onClick={() => onSelect(i)}
         >
           <p 
-            className={`font-medium ${selected === i ? 'text-[#fff]' : 'text-[#000]'}`}
+            className={selected === i 
+              ? 'font-medium text-[#fff]'
+              : 'font-light text-[#eb4142]'
+            }
           >
             {opt.value}
           </p>

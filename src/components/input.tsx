@@ -15,24 +15,26 @@ interface InputProps {
  * @returns input
  */
 const Input = ({ value, currency, percentage, onChange }: InputProps) => (
-  <div className='flex w-full rounded-[8px] overflow-hidden h-[100%]'>
+  <div className='flex w-full rounded-md h-[100%] border-[1px] border-gray-600 bg-[#333333]'>
     {currency && (
       <div 
-        className='h-[100%] w-[32px] bg-gray-500 flex justify-center items-center'
+        className='rounded-s-md h-[100%] w-[32px] bg-gray-500 flex justify-center items-center'
       >
         <p className='font-medium'>$</p>
       </div>
     )}
     
     <input 
-      value={isNaN(Number(value)) ? 0 : value}
+      value={value}
       onChange={onChange}
-      className='text-black rounded-none w-full pl-1 outline-none'
+      type='number'
+      step='3'
+      className='text-white font-normal rounded-none w-full pl-1 outline-none bg-transparent'
     />
 
     {percentage && (
       <div 
-        className='h-[100%] w-[32px] bg-gray-500 flex justify-center items-center'
+        className='rounded-e-md h-[100%] w-[32px] bg-gray-500 flex justify-center items-center'
       >
         <p className='font-medium'>%</p>
       </div>

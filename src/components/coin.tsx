@@ -36,7 +36,7 @@ const Coin = ({ name, value, onChange }: CoinProps) => {
 
       
         {onChange ? (
-          <div className='h-8 w-full mt-1'>
+          <div className='h-10 w-full mt-1'>
             <Input value={value.toString()} onChange={onChange} currency />
           </div>
         ) : (

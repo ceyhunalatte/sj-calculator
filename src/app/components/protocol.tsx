@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react';
 import { formatCurrency, formatNumber } from '@/lib/formatNumber';
 import useProtocolStore from '@/store/protocolStore';
@@ -44,7 +42,9 @@ const Protocol = ({  }) => {
   const leverage = avaxCollateral / xavaxMarketCap;
 
   return (
-    <div className='h-[100%] w-[100%] flex-1 flex flex-col'>
+    <div 
+      className={`h-[100%] w-[100%] flex-1 flex flex-col animate-fade-in`}
+    >
       <h2 className='mb-4'>Protocol simulator</h2>
 
       <div className='flex max-sm:flex-col w-full justify-between'>
@@ -59,12 +59,12 @@ const Protocol = ({  }) => {
         <div className='w-[42%] max-sm:w-full max-sm:mt-2 flex flex-col justify-end'>
           <div className='flex'>
             <p className='w-36'>AVAX deposited: </p>    
-            <p>{formatNumber(avaxDeposited)}</p>
+            <p className='font-normal'>{formatNumber(avaxDeposited)}</p>
           </div>
 
           <div className='flex'>
             <p className='w-36'>AVAX collateral: </p>    
-            <p>{formatCurrency(avaxCollateral)}</p>
+            <p className='font-normal'>{formatCurrency(avaxCollateral)}</p>
           </div>
         </div>
       </div>
@@ -80,7 +80,7 @@ const Protocol = ({  }) => {
 
           <div className='flex mt-2'>
             <p className='w-36'>aUSD market cap: </p>    
-            <p>{formatCurrency(trueAusdMarketCap)}</p>
+            <p className='font-normal'>{formatCurrency(trueAusdMarketCap)}</p>
           </div>
         </div>
 
@@ -88,7 +88,7 @@ const Protocol = ({  }) => {
           <div className='flex items-center'>
             <p>aUSD circulation: </p>
           </div>
-          <div className='h-8 mt-1'>
+          <div className='h-10 mt-1'>
             <Input 
               value={ausdCirculation.toString()}
               onChange={(e) => updateAusdCirculation(Number((e.target as HTMLInputElement).value))}
@@ -108,7 +108,7 @@ const Protocol = ({  }) => {
 
           <div className='flex mt-2'>
             <p className='w-36'>xAVAX market cap: </p>    
-            <p>{formatCurrency(xavaxPrice)}</p>
+            <p className='font-normal'>{formatCurrency(xavaxPrice)}</p>
           </div>
         </div>
 
@@ -116,7 +116,7 @@ const Protocol = ({  }) => {
           <div className='flex items-center'>
             <p>xAVAX circulation: </p>
           </div>
-          <div className='h-8 mt-1'>
+          <div className='h-10 mt-1'>
             <Input 
               value={xavaxCirculation.toString()}
               onChange={(e) => updateXavaxCirculation(Number((e.target as HTMLInputElement).value))}
@@ -129,12 +129,12 @@ const Protocol = ({  }) => {
 
       <div className='flex-row flex'>
         <p className='w-[160px]'>Leverage: </p>
-        <p>{leverage.toFixed(2)}</p>
+        <p className='font-normal'>{leverage.toFixed(2)}</p>
       </div>
 
       <div className='flex-row flex'>
         <p className='w-[160px]'>Collaterazation ratio: </p>
-        <p>{collateralizationRatio.toFixed(2)}%</p>
+        <p className='font-normal'>{collateralizationRatio.toFixed(2)}%</p>
       </div>
     </div>
   )
