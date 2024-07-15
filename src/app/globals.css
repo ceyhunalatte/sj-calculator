@@ -40,16 +40,19 @@ input::-webkit-inner-spin-button {
 
 h1 {
   font-size: 2rem;
-  font-weight: 600
+  font-weight: 600;
+  color: #fff;
 }
 
 h2 {
   font-size: 1.75rem;
   font-weight: 400;
+  color: #fff;
 }
 
 h3 {
   font-size: 1.50rem;
+  color: #fff;
 }
 
 input, p {
@@ -63,6 +66,7 @@ h1, h2, h3 {
 
 p {
   font-weight: 200;
+  color: #fff;
 }
 
 .font-titilium {
@@ -74,10 +78,10 @@ p {
     opacity: 0
   }
   100% {
-    opacity: 100
+    opacity: 1
   }
 }
 
 .animate-fade-in {
-  animation: fadeInFrames 0.2s;
+  animation: fadeInFrames 0.3s;
 }
