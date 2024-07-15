@@ -111,20 +111,26 @@ const Trading = ({ }) => {
 
       <hr className='my-6' />
 
-      <Coin 
-        name='xAVAX'
-        value={getXavaxPrice(true)}
-      />
+      <div className='flex max-sm:flex-col w-full justify-between'>
+        <Coin 
+          name='xAVAX'
+          value={getXavaxPrice(true)}
+        />
 
-      <div className='flex-row flex mt-1'>
-        <p className='w-[160px]'>New xAVAX position: </p>
-        <p className='font-normal'>{formatCurrency(getPosition(true))}</p> 
+        <div className='w-[42%] max-sm:w-full max-sm:mt-2 flex flex-col justify-end'>
+          <div className='flex-row flex mt-1'>
+            <p className='w-[160px]'>New xAVAX position: </p>
+            <p className='font-normal'>{formatCurrency(getPosition(true))}</p> 
+          </div>
+
+          <div className='flex-row flex'>
+            <p className='w-[160px]'>New AVAX amount: </p>
+            <p className='font-normal'>{avaxReturned.toFixed(2)}</p> 
+          </div>
+        </div>
       </div>
 
-      <div className='flex-row flex'>
-        <p className='w-[160px]'>New AVAX amount: </p>
-        <p className='font-normal'>{avaxReturned.toFixed(2)}</p> 
-      </div>
+      <hr className='my-6' />
 
       <div className='flex-row flex'>
         <p className='w-[160px]'>Dollar value change: </p>
