@@ -81,7 +81,7 @@ const Trading = ({ }) => {
 
         <div className='w-[42%] max-sm:w-full max-sm:mt-2 flex flex-col justify-end'>
           <div className='flex min-[640px]:justify-end'>
-            <p className='w-36'>AVAX mited: </p>    
+            <p className='w-36'>AVAX minted: </p>    
             <p className='font-normal'>{formatNumber(getMinted())}</p>
           </div>
 
