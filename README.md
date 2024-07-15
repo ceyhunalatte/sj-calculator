@@ -1,6 +1,6 @@
 # Stable Jack Calculator
 
-Calculator demo dedicated to Stable Jack interview process.
+Simulator demo dedicated to Stable Jack take home interview project.
 
 ## Getting Started
 
